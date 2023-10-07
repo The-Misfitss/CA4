@@ -1,0 +1,3 @@
+(i200864) --> Wrote docker-compose file + yml scripts, tested the application, Made sure all the components work together seamlessly.
+(i200635) --> 
+(i200468) --> 
