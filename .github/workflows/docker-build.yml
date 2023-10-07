@@ -1,39 +1,27 @@
-name: Docker Build, Push, and Run
+name: Docker Image CI
 
 on:
   push:
-    branches:
-      - i200635
+    branches: [ "i200635" ]
+  pull_request:
+    branches: [ "i200635" ]
 
 jobs:
-  build-push-run:
+
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Node.js 16
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16
-
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-
+    - uses: actions/checkout@v3
     - name: Login to Docker Hub
-      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
-
-    - name: Build Docker image
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ca4-app:latest
+    - name: Push Docker image
       run: |
-        docker buildx create --use
-        docker buildx build \
-          --tag ${{ secrets.DOCKER_USERNAME }}/web_app:latest \
-          .
-
-    - name: Push Docker image to Docker Hub
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/web_app:latest
-
-    - name: Run Docker Container
-      run: |
-        docker run -d --name web_app_container -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/web_app:latest
+          docker tag ca4-app:latest jawwadhabib/ca4-app
+          docker push jawwadhabib/ca4-app
