@@ -1,9 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, request, render_template,redirect
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, request, render_template, redirect
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword@192.168.1.4:5432/mydb'
+
+# Retrieve the database URL from the environment variable DATABASE_URL
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://myuser:mypassword@database:5432/mydb')
+
 db = SQLAlchemy(app)
 
 class Student(db.Model):
@@ -31,4 +34,4 @@ def students():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # Create the database table
-    app.run(host='0.0.0.0',port=5000)
+    app.run(host='0.0.0.0', port=5000)
