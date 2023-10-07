@@ -1,1 +1,4 @@
-flask=2.01
+Flask
+SQLAlchemy
+psycopg2-binary
+flask_sqlalchemy
