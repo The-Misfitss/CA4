@@ -22,7 +22,11 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t postgresql-db-service:latest .
+      
+      - name: Tag Docker image
+        run: |
+          docker tag postgresql-db-service:latest ${{ secrets.DOCKERHUB_USERNAME }}/ca4-postgres:latest
 
       - name: Push Docker image to registry
         run: |
-          docker push postgresql-db-service:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ca4-postgres:latest
