@@ -1,0 +1,34 @@
+name: Docker Compose Check
+
+on:
+  push:
+    branches:
+      - main
+      - i200864
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Compose
+      run: docker-compose --version
+      continue-on-error: true
+
+    - name: Build and Run Containers
+      run: |
+        docker-compose pull
+        docker-compose up -d
+      continue-on-error: true
+
+    - name: Check Docker Compose Containers
+      run: docker-compose ps
+
+    - name: Cleanup
+      run: docker-compose down
+
+    - name: Final Check
+      run: docker-compose ps
