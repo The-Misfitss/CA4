@@ -21,9 +21,9 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t Postgresql-db-service:latest
-        working-directory: ./path/to/your/Dockerfile/directory
+          docker build -t postgresql-db-service:latest
+        working-directory: ./
 
       - name: Push Docker image to registry
         run: |
-          docker push Postgresql-db-service:latest
+          docker push postgresql-db-service:latest
