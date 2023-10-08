@@ -2,11 +2,7 @@ name: Docker Compose Check
 
 on:
   push:
-    branches:
-      - main
-      - i200864
-      - i200468
-      - i200635
+    branches: ['main','i200864','i200468','i200635']
 
 jobs:
   build:
