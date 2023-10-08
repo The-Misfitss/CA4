@@ -1,3 +1,3 @@
 (i200864) --> Wrote docker-compose file + yml scripts, tested the application, Made sure all the components work together seamlessly.
-(i200635) --> 
+(i200635) --> Tasks included setting up a PostgreSQL database system, configuring the Dockerfile for the database service, creating a Docker image for the database, pushing this image to the group's Docker Hub profile, and meticulously documenting the procedures for building and running the database service.
 (i200468) --> 
