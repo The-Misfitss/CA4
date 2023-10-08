@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - i200864
+      - i200468
+      - i200635
 
 jobs:
   build:
