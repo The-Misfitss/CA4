@@ -1,5 +1,5 @@
 # Use the official PostgreSQL image as the base image
-FROM postgres:14.5
+FROM postgres:13
 
 # Set environment variables (optional)
 ENV POSTGRES_DB=mydb
