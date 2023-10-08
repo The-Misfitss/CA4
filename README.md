@@ -34,8 +34,13 @@ Maintained the code on a GitHub repository.
 # Testing Process
 Our team has conducted rigorous testing to ensure that each part of the application works correctly and independently. We have set up a local Docker environment based on our individual services for testing. We have documented the testing process and verified that each part functions as expected without relying on other members' tasks.
 # How to run.
+
 -> Download the docker-compose file.
+
 -> store it in a folder
+
 -> Open a terminal in that folder.
+
 -> Type docker-compose up.
+
 -> It will pull images from the docker hub and will make a network for them.
