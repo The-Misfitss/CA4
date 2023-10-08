@@ -4,8 +4,11 @@
 In this collaborative project, our team, known as "CA4," has successfully created a Docker Compose setup for a web application with a database. We are proud to share that we have utilized the following technologies to achieve this:
 
 Database: PostgreSQL
+
 Web Server: Flask
+
 Orchestration: Docker Compose
+
 Our team has worked diligently, and we have divided the tasks among team members to ensure that each part of the application can be tested individually without dependencies on others. To facilitate code maintenance and collaboration, we have used GitHub.
 
 Task Allocation
