@@ -1,7 +1,7 @@
 # CA4
 
 # Class Activity No 4 - Docker Compose Setup
-In this collaborative project, our team, known as "CA4," has successfully created a Docker Compose setup for a web application with a database. We are proud to share that we have utilized the following technologies to achieve this:
+In this collaborative project, our team has successfully created a Docker Compose setup for a web application with a database. We are proud to share that we have utilized the following technologies to achieve this:
 
 Database: PostgreSQL
 
