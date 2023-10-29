@@ -1,8 +1,9 @@
 pipeline {
-    agent any
     environment {
         DOCKERHUB_USERNAME = ''
     }
+    
+    agent any
 
     stages {
         stage('Login to Docker Hub') {
@@ -31,7 +32,7 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
-                sh "docker push $DOCKERHUB_USERNAME/ca4-postgres:latest"
+                sh 'docker push $DOCKERHUB_USERNAME/ca4-postgres:latest'
             }
         }
     }
