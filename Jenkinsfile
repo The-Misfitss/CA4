@@ -1,8 +1,8 @@
 pipeline {
+    agent any
     environment {
         DOCKERHUB_USERNAME = ''
     }
-    agent any
 
     stages {
         stage('Login to Docker Hub') {
