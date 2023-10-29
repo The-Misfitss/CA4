@@ -17,28 +17,22 @@ pipeline {
             }
         }
 
-        stage('Printing Docker Hub Credentials') {
+        stage('Build Docker Image') {
             steps {
-                sh 'echo $DOCKERHUB_USERNAME'
+                sh 'docker build -t postgresql-db-service:latest .'
             }
         }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         sh 'docker build -t postgresql-db-service:latest .'
-        //     }
-        // }
+        stage('Tag Docker Image') {
+            steps {
+                sh 'docker tag postgresql-db-service:latest $DOCKERHUB_USERNAME/ca4-postgres:latest'
+            }
+        }
 
-        // stage('Tag Docker Image') {
-        //     steps {
-        //         sh 'docker tag postgresql-db-service:latest $DOCKERHUB_USERNAME/ca4-postgres:latest'
-        //     }
-        // }
-
-        // stage('Push Docker Image to Docker Hub') {
-        //     steps {
-        //         sh 'docker push $DOCKERHUB_USERNAME/ca4-postgres:latest'
-        //     }
-        // }
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                sh 'docker push $DOCKERHUB_USERNAME/ca4-postgres:latest'
+            }
+        }
     }
 }
