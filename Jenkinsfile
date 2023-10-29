@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        DOCKERHUB_USERNAME = credentials('misfits-dockerhub-credentials').username
+        DOCKERHUB_USERNAME = ''
     }
     agent any
 
@@ -9,8 +9,9 @@ pipeline {
             steps {
                 script {
                     // Use the Docker Hub credentials stored in Jenkins
-                    withCredentials([usernamePassword(credentialsId: 'misfits-dockerhub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_TOKEN')]) {
-                        sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN'
+                    withCredentials([usernamePassword(credentialsId: 'misfits-dockerhub-credentials', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_TOKEN')]) {
+                        sh 'docker login -u $DOCKERHUB_USER -p $DOCKERHUB_TOKEN'
+                        DOCKERHUB_USERNAME = DOCKERHUB_USER
                     }
                 }
             }
